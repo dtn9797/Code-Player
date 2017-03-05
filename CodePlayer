@@ -30,6 +30,11 @@
 				
 				float:left;
 			}
+			.text {
+				float:left;
+				height: 100%;
+				display: none;
+			}
         </style>
     </head>
 
@@ -39,16 +44,17 @@
 			
 			<div id=button-container>
 			
-				<button>HTML</button>
-				<button>Css</button>
-				<button>Javascript</button>
-				<button>Output</button>
-				
+				<button id="hTMLButton">HTML</button>
+				<button id="cssButton">Css</button>
+				<button id="javascriptButton">Javascript</button>
+				<button id="outputButton">Output</button>	
 			</div>
 			
 		</div>
 		
-		
+		<textarea class="text">aaaa</textarea>
+			
+		<iframe id="output"></iframe>
 		
 		<script type="text/javascript">
 			//change color when the mouse hover to button
@@ -57,7 +63,15 @@
 				$(this).css("backgroundColor","white")
 			});
 			
-
+			//show textarea when click on button
+			$("#hTMLButton").click(function(){
+				$(".text").toggle();
+			});
+			//$("#hTMLButton").off("click");
+			
+			//auto update text in output
+			 //alert($(".text").contents());
+			 $("iframe").contents().find("html").html;
 		</script>
 		
 		
