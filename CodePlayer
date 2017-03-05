@@ -1,0 +1,71 @@
+<html>
+    <head>
+		<!--jQuery-->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+		<!-- Bootstrap-->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+		<!--jQueryUI-->
+		<link rel="stylesheet" href="jquery-ui-1.12.1/jquery-ui.css">
+		<script src="jquery-ui-1.12.1/jquery-ui.js"></script>
+		
+		<link rel="stylesheet" type="text/css" href="CodePlayer.css">
+		
+        <title>Code Player</title>
+        <style style="text/css">
+			body {
+				background-color: dimgrey;
+			}
+			#topbar {
+				width:100%;
+				background-color: #FFFFFF;
+				margin:0px;
+				height:34px;
+			}
+			#button-container {
+				width:270px;
+				margin:0 auto;
+			
+			}
+			button {
+				
+				float:left;
+			}
+        </style>
+    </head>
+
+    <body>
+
+		<div id="topbar">
+			
+			<div id=button-container>
+			
+				<button>HTML</button>
+				<button>Css</button>
+				<button>Javascript</button>
+				<button>Output</button>
+				
+			</div>
+			
+		</div>
+		
+		
+		
+		<script type="text/javascript">
+			//change color when the mouse hover to button
+			$("button").hover(function(){
+				$(this).css("backgroundColor","grey")},function(){
+				$(this).css("backgroundColor","white")
+			});
+			
+
+		</script>
+		
+		
+		
+		
+		<!--Bootstrap-->
+		<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+    </body>
+</html>
