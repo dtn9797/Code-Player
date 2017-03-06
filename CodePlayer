@@ -1,12 +1,13 @@
-<html>
+
+ <html>
     <head>
 		<!--jQuery-->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 		<!-- Bootstrap-->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
 		<!--jQueryUI-->
-		<link rel="stylesheet" href="jquery-ui-1.12.1/jquery-ui.css">
-		<script src="jquery-ui-1.12.1/jquery-ui.js"></script>
+		<link rel="stylesheet" href="jquery-ui/jquery-ui.css">
+		<script src="jquery-ui/jquery-ui.js"></script>
 		
 		<link rel="stylesheet" type="text/css" href="CodePlayer.css">
 		
@@ -53,6 +54,7 @@
 		</div>
 		
 		<textarea class="text">aaaa</textarea>
+		<textarea class="text1"><style style="text/css">body {background-color:red;}</style></textarea>
 			
 		<iframe id="output"></iframe>
 		
@@ -70,8 +72,16 @@
 			//$("#hTMLButton").off("click");
 			
 			//auto update text in output
-			 //alert($(".text").contents());
-			 $("iframe").contents().find("html").html;
+			 
+			 
+			 $('textarea').on('input propertychange', function() {
+
+      			$("iframe").contents().find("html").html($(".text").val());
+				$("iframe").contents().find("html").html($(".text1").val());
+			 	});
+			
+			
+			
 		</script>
 		
 		
@@ -83,3 +93,4 @@
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
     </body>
 </html>
+
