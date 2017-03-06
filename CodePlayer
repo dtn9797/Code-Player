@@ -12,9 +12,9 @@
 		<link rel="stylesheet" type="text/css" href="CodePlayer.css">
 		
         <title>Code Player</title>
-        <style style="text/css">
+        <style type="text/css">
 			body {
-				background-color: dimgrey;
+				background-color: white;
 			}
 			#topbar {
 				width:100%;
@@ -31,7 +31,7 @@
 				
 				float:left;
 			}
-			.text {
+			.htmltext {
 				float:left;
 				height: 100%;
 				display: none;
@@ -53,37 +53,55 @@
 			
 		</div>
 		
-		<textarea class="text">aaaa</textarea>
-		<textarea class="text1"><style style="text/css">body {background-color:red;}</style></textarea>
+		<textarea class="htmltext">aaaa</textarea>
+		<textarea class="csstext">body {background-color:red;}</textarea>
+		<textarea class="jstext">alert("hi");</textarea>
+			
+		
+		
 			
 		<iframe id="output"></iframe>
 		
 		<script type="text/javascript">
+			
+			
+			function autoUpdateOutput() {
+				$("iframe").contents().find("html").html("<html><header>"
+					+"<style type='text/css'>" + $(".csstext").val() + "</style></header><body>"+$(".htmltext").val()+"</body></html>");
+
+			}
+			
+			
 			//change color when the mouse hover to button
 			$("button").hover(function(){
 				$(this).css("backgroundColor","grey")},function(){
 				$(this).css("backgroundColor","white")
 			});
 			
-			//show textarea when click on button
+			//show textarea when click on buttons
 			$("#hTMLButton").click(function(){
-				$(".text").toggle();
+				$(".htmltext").toggle();
 			});
-			//$("#hTMLButton").off("click");
 			
-			//auto update text in output
-			 
-			 
+			
+			//auto update output
+			 autoUpdateOutput();
 			 $('textarea').on('input propertychange', function() {
 
-      			$("iframe").contents().find("html").html($(".text").val());
-				$("iframe").contents().find("html").html($(".text1").val());
-			 	});
+      			$("iframe").contents().find("html").html("<html><header>"
+					+"<style type='text/css'>" + $(".csstext").val() + "</style></header><body>"+$(".htmltext").val()+"</body></html>");
+				   
+			 });
 			
-			
+			//auto update text in iframe
+			 eval( $(".jstext").val() );
+			                       // the iframe's window
+
+			                // re-evaluate function with eval from iframe
+			   
+
 			
 		</script>
-		
 		
 		
 		
