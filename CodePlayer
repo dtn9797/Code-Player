@@ -1,5 +1,4 @@
-
- <html>
+<html>
     <head>
 		<!--jQuery-->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
@@ -18,88 +17,137 @@
 			}
 			#topbar {
 				width:100%;
-				background-color: #FFFFFF;
+				background-color: #01CFE7;
 				margin:0px;
 				height:34px;
 			}
 			#button-container {
 				width:270px;
-				margin:0 auto;
+				margin:0px auto;
 			
 			}
 			button {
+				margin:2px 0px 0px 0px;
+				float:left;
+				height:30px;
+				background-color:white;
 				
-				float:left;
 			}
-			.htmltext {
-				float:left;
+			#htmlButton {
+				border-top-left-radius: 7px;
+				border-bottom-left-radius: 7px;
+				
+			}
+			#outputButton {
+				border-top-right-radius: 7px ;
+				border-bottom-right-radius: 7px;
+			}
+			.text{
 				height: 100%;
-				display: none;
+				display:none;
+			}
+			.container1 {
+				margin:0px 20px;
+				width:100%;
+				
+			}
+			.activeButton {
+				background-color:#69EFFE;
+			}
+			.show {
+				display:block;
+			}
+			.hover {
+				background-color:rgb(157, 226, 234);
+			}
+			iframe {
+				border:none;
 			}
         </style>
     </head>
 
     <body>
+		
+			<div id="topbar">
 
-		<div id="topbar">
-			
-			<div id=button-container>
-			
-				<button id="hTMLButton">HTML</button>
-				<button id="cssButton">Css</button>
-				<button id="javascriptButton">Javascript</button>
-				<button id="outputButton">Output</button>	
+				<div id=button-container>
+
+					<button id="html">HTML</button>
+					<button id="css">Css</button>
+					<button id="js">Javascript</button>
+					<button id="output">Output</button>	
+				</div>	
 			</div>
+
+			<div class="container1">
+				<div class="row">
+					<textarea class="text htmltext">aaaa</textarea>
+					<textarea class=" text csstext">body {background-color:red;}</textarea>
+					<textarea class=" text jstext"></textarea>
+					<iframe class="text outputtext" id="Ioutput"></iframe>
+				</div>
+			</div>
+		
 			
-		</div>
-		
-		<textarea class="htmltext">aaaa</textarea>
-		<textarea class="csstext">body {background-color:red;}</textarea>
-		<textarea class="jstext">alert("hi");</textarea>
-			
-		
-		
-			
-		<iframe id="output"></iframe>
-		
 		<script type="text/javascript">
 			
 			
 			function autoUpdateOutput() {
 				$("iframe").contents().find("html").html("<html><header>"
 					+"<style type='text/css'>" + $(".csstext").val() + "</style></header><body>"+$(".htmltext").val()+"</body></html>");
-
+				
+				document.getElementById("Ioutput").contentWindow.eval( $(".jstext").val() );
 			}
 			
 			
 			//change color when the mouse hover to button
 			$("button").hover(function(){
-				$(this).css("backgroundColor","grey")},function(){
-				$(this).css("backgroundColor","white")
-			});
-			
+				$(this).toggleClass("hover")});
+				
 			//show textarea when click on buttons
-			$("#hTMLButton").click(function(){
-				$(".htmltext").toggle();
+			$("button").click(function(){
+				$(this).toggleClass("activeButton");
+				var buttonName = $(this).attr("id");
+				$("."+buttonName+"text").toggleClass("show");
+				var panelcounter =$('.show').length;
+				$(".text").width($(window).width()/ panelcounter);
+				
 			});
+				
+				/*$("#hTMLButton").click(function(){
+					$(this).toggleClass("activeButton");
+					$(".htmltext").toggleClass("hidden");
+				});
+				$("#cssButton").click(function(){
+					$(this).toggleClass("activeButton");
+					$(".csstext").toggleClass("hidden");
+
+				});
+				$("#javascriptButton").click(function(){
+					$(this).toggleClass("activeButton");
+
+					$(".jstext").toggleClass("hidden");
+				});
+				$("#outputButton").click(function(){
+					$(this).toggleClass("activeButton");
+					$("#output").toggleClass("hidden");
+				});*/
+			
+			
+				
+			
+			
 			
 			
 			//auto update output
 			 autoUpdateOutput();
 			 $('textarea').on('input propertychange', function() {
-
-      			$("iframe").contents().find("html").html("<html><header>"
-					+"<style type='text/css'>" + $(".csstext").val() + "</style></header><body>"+$(".htmltext").val()+"</body></html>");
-				   
+      			 autoUpdateOutput();  
 			 });
 			
-			//auto update text in iframe
-			 eval( $(".jstext").val() );
-			                       // the iframe's window
-
-			                // re-evaluate function with eval from iframe
-			   
-
+			//resize window.
+			
+			
 			
 		</script>
 		
@@ -111,4 +159,3 @@
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
     </body>
 </html>
-
